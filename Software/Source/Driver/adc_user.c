@@ -62,7 +62,7 @@ s32 ADC_GetDropValue(u8 idx)
 {
     if(idx < RANK_DROP_MAX)
     {
-        return ADC_GetValue(RANK_DROP1 + idx);
+        return ADC_GetValue((RANK_DROP_MAX-1) - idx);
     }
     return 0;
 }

@@ -40,8 +40,8 @@ s32 MaxOut = SINGLE_MAX*2;
 */
 void MotorPIDInit(void)
 {
-    PIDInit(&SpeedLoopVPID, 8000, 50, 0);
-    PIDInit(&SpeedLoopWPID, 3000, 20, 0);
+    PIDInit(&SpeedLoopVPID, 5000, 40, 0);
+    PIDInit(&SpeedLoopWPID, 2200, 20, 0);
     
     SpeedLoopVPID.outabslimit = &MaxOut;
     SpeedLoopWPID.outabslimit = &MaxOut;
@@ -119,7 +119,7 @@ s32 Right_debug = 0;
 void AngularVelocityController(s32 TargetV, s32 TargetW, s32 velocity, s32 omega)
 {
     bool stop_flag;
-    s32 outV, outA;
+    static s32 outV, outA;
     s32 left_out, right_out;
 
     static bool loop_en = false;
@@ -180,4 +180,5 @@ void AngularVelocityController(s32 TargetV, s32 TargetW, s32 velocity, s32 omega
     
     Motor_Output(0, left_out, stop_flag);
     Motor_Output(1, right_out, stop_flag);
+
 }
